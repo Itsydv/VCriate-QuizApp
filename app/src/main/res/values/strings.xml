@@ -22,11 +22,14 @@
     <string name="question_progress">Question %1$s/%2$s</string>
     <string name="quit_quiz">Quit Quiz</string>
     <string name="next">Next</string>
+    <string name="skip">Skip</string>
     <string name="quiz_result">Quiz Result</string>
     <string name="return_to_feed">Return to feed</string>
     <string name="share_results">Share Results</string>
     <string name="your_score">Your Score</string>
     <string name="quiz_not_taken">You haven\'t taken the quiz yet</string>
+    <string name="time_left">Time Left - %1$d:%2$d</string>
+    <string name="time_up">Time Up!</string>
     <string name="prize_image">Prize Image</string>
     <string name="logout">Logout</string>
     <string name="profile">Profile</string>
@@ -41,4 +44,5 @@
     <string name="new_password">New Password</string>
     <string name="delete_account">Delete Account</string>
     <string name="update_profile">Update Profile</string>
+    <string name="share_result">Hey look I got %1$d out %2$d in VCriate\'s Quiz.</string>
 </resources>

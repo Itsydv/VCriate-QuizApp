@@ -1,5 +1,6 @@
 package io.itsydv.vcriatequiz.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -66,29 +68,38 @@ class FeedFragment : Fragment() {
             }
         }
 
-        binding.slRefresh.setOnRefreshListener {
-            model.getQuestions()
-            binding.slRefresh.isRefreshing = false
-        }
-
-        model.questions.observe(viewLifecycleOwner) {
-            when(it) {
+        model.questions.observe(viewLifecycleOwner) { questions ->
+            when(questions) {
                 is Resource.Loading -> {
-                    binding.btnStartQuiz.apply {
-                        visibility = View.VISIBLE
-                        isEnabled = false
-                    }
+                    binding.btnStartQuiz.visibility = View.GONE
+                    binding.pbLoading.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), questions.message, Toast.LENGTH_SHORT).show()
                     binding.btnStartQuiz.visibility = View.GONE
+                    binding.pbLoading.visibility = View.GONE
                 }
                 is Resource.Success -> {
+                    binding.pbLoading.visibility = View.GONE
+                    val result = questions.data!!.body()!!.result
                     binding.btnStartQuiz.apply {
                         visibility = View.VISIBLE
-                        isEnabled = true
                         setOnClickListener {
-                            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToQuestionFragment())
+
+                            if (requireActivity().getSharedPreferences("score", Context.MODE_PRIVATE)
+                                    .getInt("score", -1) != -1) {
+                                Toast.makeText(requireContext(), "You have already taken the quiz, check Results here", Toast.LENGTH_SHORT).show()
+                                findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToProfileFragment())
+                            } else {
+                                MaterialAlertDialogBuilder(requireContext())
+                                    .setTitle("Start Quiz")
+                                    .setMessage("Are you sure you want to start the quiz?\nTotal questions: ${result.questions.size}\nTime limit: ${result.timeInMinutes} minutes")
+                                    .setPositiveButton("Yes") { _, _ ->
+                                        findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToQuestionFragment())
+                                    }
+                                    .setNegativeButton("No") { _, _ -> }
+                                    .show()
+                            }
                         }
                     }
                 }

@@ -18,7 +18,7 @@ class FeedViewModel: ViewModel() {
         getQuestions()
     }
 
-    fun getQuestions() = viewModelScope.launch {
+    private fun getQuestions() = viewModelScope.launch {
         _questions.postValue(Resource.Loading())
         _questions.addSource(repo.getQuestions()) {
             _questions.postValue(it)
