@@ -1,6 +1,7 @@
 package io.itsydv.vcriatequiz.main
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class QuestionFragment : Fragment() {
     private val feedModel by activityViewModels<FeedViewModel>()
     private val questionModel by activityViewModels<QuestionViewModel>()
     private var attempted = false
+    private lateinit var timer: CountDownTimer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,19 @@ class QuestionFragment : Fragment() {
 
         feedModel.questions.observe(viewLifecycleOwner) {
             if (it.data != null) {
+                val quizTime = it.data.body()!!.result.timeInMinutes
+                timer = object : CountDownTimer((quizTime*60*1000).toLong(), 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        val minutes = millisUntilFinished / 1000 / 60
+                        val seconds = millisUntilFinished / 1000 % 60
+
+                        binding.tvTimeRemaining.text = "Time Left - ${minutes}:${seconds}"
+                    }
+                    override fun onFinish() {
+                        binding.tvTimeRemaining.text = "Time Up!"
+                    }
+                }.start()
+
                 val questions = it.data.body()!!.result.questions
                 val totalQuestions = questions.size
                 binding.lpiProgress.max = totalQuestions
@@ -55,6 +70,7 @@ class QuestionFragment : Fragment() {
                     binding.btnNext.text = if (qNum == totalQuestions-1) "Submit" else if (attempted) "Next" else "Skip"
                     binding.btnNext.setOnClickListener {
                         if (qNum == totalQuestions-1) {
+                            timer.cancel()
                             evaluateQuizResult()
                         } else {
                             questionModel.questionNumber.postValue(qNum + 1)
@@ -98,6 +114,7 @@ class QuestionFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        timer.cancel()
         super.onDestroyView()
         _binding = null
     }

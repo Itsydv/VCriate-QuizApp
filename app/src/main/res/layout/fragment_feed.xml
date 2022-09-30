@@ -76,21 +76,11 @@
                 android:text="@string/start_quiz"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider" />
-
-            <TextView
-                android:id="@+id/tvNumOfQuestions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/textColorOpposite"
-                android:textSize="14sp"
-                tools:text="12 questions"
-                app:layout_constraintStart_toStartOf="@+id/tvAppName"
-                app:layout_constraintTop_toBottomOf="@+id/btnStartQuiz"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvProfilePic"
@@ -112,48 +102,6 @@
                     android:contentDescription="@string/profile_picture"/>
 
             </androidx.cardview.widget.CardView>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerViewContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:shimmer_auto_start="false"
-                tools:visibility="visible"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvNumOfQuestions">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                    <include layout="@layout/item_questions_shimmer"/>
-                </LinearLayout>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvQuestions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                tools:visibility="visible"
-                android:visibility="gone"
-                tools:listitem="@layout/item_question_preview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/shimmerViewContainer"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
