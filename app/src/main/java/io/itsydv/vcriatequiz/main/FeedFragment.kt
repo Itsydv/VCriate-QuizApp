@@ -53,11 +53,26 @@ class FeedFragment : Fragment() {
             requireActivity().finish()
         } else {
             binding.tvGreet.text = greet()
-            binding.tvUserName.text = currentUser!!.displayName
-            binding.ivProfilePic.load(Gravatar.getProfileUrl(currentUser!!.email!!)) {
-                crossfade(true)
-                placeholder(R.drawable.ic_user_img)
+            binding.tvUserName.text = currentUser!!.displayName ?: "Name not set"
+            if (currentUser?.photoUrl != null) {
+                binding.ivProfilePic.load(currentUser?.photoUrl) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_user_img)
+                }
+            } else {
+                binding.ivProfilePic.load(Gravatar.getProfileUrl(currentUser!!.email!!)) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_user_img)
+                }
             }
+            binding.cvProfilePic.setOnClickListener {
+                findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToProfileFragment())
+            }
+        }
+
+        binding.slRefresh.setOnRefreshListener {
+            model.getQuestions()
+            binding.slRefresh.isRefreshing = false
         }
 
         setupRecyclerView()
@@ -68,12 +83,17 @@ class FeedFragment : Fragment() {
                     binding.rvQuestions.visibility = View.GONE
                     binding.shimmerViewContainer.visibility = View.VISIBLE
                     binding.shimmerViewContainer.startShimmer()
+                    binding.btnStartQuiz.apply {
+                        visibility = View.VISIBLE
+                        isEnabled = false
+                    }
                 }
                 is Resource.Error -> {
                     binding.rvQuestions.visibility = View.GONE
                     binding.shimmerViewContainer.stopShimmer()
                     binding.shimmerViewContainer.visibility = View.GONE
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    binding.btnStartQuiz.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     binding.shimmerViewContainer.stopShimmer()
@@ -82,6 +102,13 @@ class FeedFragment : Fragment() {
                     val questions = it.data!!.body()!!.result.questions
                     binding.tvNumOfQuestions.text = getString(R.string.num_of_questions, questions.size)
                     allQuestionsAdapter.differ.submitList(questions)
+                    binding.btnStartQuiz.apply {
+                        visibility = View.VISIBLE
+                        isEnabled = true
+                        setOnClickListener {
+                            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToQuestionFragment())
+                        }
+                    }
                 }
             }
         }
@@ -89,7 +116,7 @@ class FeedFragment : Fragment() {
 
     private fun setupRecyclerView() {
         allQuestionsAdapter = AllQuestionsAdapter{
-            findNavController().navigate(FeedFragmentDirections.actionFeedFragmentToQuestionFragment(it))
+            Toast.makeText(requireContext(), "Click on the Start Quiz Button to start the Quiz", Toast.LENGTH_LONG).show()
         }
         binding.rvQuestions.apply {
             adapter = allQuestionsAdapter

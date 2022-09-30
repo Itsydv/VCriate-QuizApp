@@ -9,13 +9,13 @@ import io.itsydv.vcriatequiz.databinding.ItemQuestionPreviewBinding
 import io.itsydv.vcriatequiz.models.Question
 
 // Adapter for the recycler view in the feed fragment
-class AllQuestionsAdapter(val listener: (Int) -> Unit): RecyclerView.Adapter<AllQuestionsAdapter.QuestionsViewHolder>() {
+class AllQuestionsAdapter(val listener: (Unit) -> Unit): RecyclerView.Adapter<AllQuestionsAdapter.QuestionsViewHolder>() {
 
     inner class QuestionsViewHolder(val binding: ItemQuestionPreviewBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             // When the user clicks on a question, listener will be called
             itemView.setOnClickListener {
-                listener.invoke(adapterPosition)
+                listener.invoke(Unit)
             }
         }
     }
