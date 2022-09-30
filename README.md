@@ -6,6 +6,9 @@
 This is an Basic QuizApp based on the Information provided in the Intern hiring task and JSON data fetched from API.
 The app first lists a set of questions which are available in the JSON data. User can tap on a single question to view it's details and attempt it.
 
+Because of the time constraint, I was not able to implement the following features:
+- Showing the correct answer after the user has attempted the question.
+
 ## Features
 - Login and Signup using Google Sign In as well as Email and Password.
 - List of Questions fetched from API.
