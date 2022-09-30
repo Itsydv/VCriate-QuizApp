@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "544677925921",
+    "project_id": "vcriate-quiz",
+    "storage_bucket": "vcriate-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544677925921:android:fe5b5e09e09d1512277f60",
+        "android_client_info": {
+          "package_name": "io.itsydv.vcriatequiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544677925921-seslicpqlkttrrqrk8l764j7v5roqlj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX9ZzEBM1weAOtYSSet6cx9scyNM09oF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544677925921-seslicpqlkttrrqrk8l764j7v5roqlj4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

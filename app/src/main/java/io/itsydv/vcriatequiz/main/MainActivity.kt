@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import io.itsydv.vcriatequiz.databinding.ActivityMainBinding
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null

@@ -3,10 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feedFragment2">
+    app:startDestination="@id/feedFragment">
     <fragment
-        android:id="@+id/feedFragment2"
+        android:id="@+id/feedFragment"
         android:name="io.itsydv.vcriatequiz.main.FeedFragment"
-        android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        android:label="Feed"
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="io.itsydv.vcriatequiz.main.QuestionFragment"
+        android:label="QuestionFragment" >
+        <action
+            android:id="@+id/action_questionFragment_to_feedFragment"
+            app:destination="@id/feedFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out"
+            app:popUpTo="@id/feedFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_questionFragment_self"
+            app:destination="@id/questionFragment" />
+        <argument
+            android:name="questionNumber"
+            app:argType="integer" />
+    </fragment>
 </navigation>

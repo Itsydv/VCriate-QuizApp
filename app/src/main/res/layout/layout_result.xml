@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_streak"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvHeading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/source_code_pro_semi_bold"
+        android:text="@string/quiz_result"
+        android:textColor="@color/textColorOpposite"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivPrize"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/gold_medal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeading1"
+        android:contentDescription="@string/prize_image" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/textColorOpposite"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivPrize"
+        tools:text="Congratulations!" />
+
+    <TextView
+        android:id="@+id/tvHeading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textAlignment="center"
+        android:textColor="@color/textColorOpposite"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code_pro_semi_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResult"
+        android:text="@string/your_score" />
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/textColorOpposite"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:fontFamily="@font/source_code_pro_semi_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeading2"
+        tools:text="20/20" />
+
+    <Button
+        android:id="@+id/btnShareResults"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/share_results"
+        android:background="@drawable/button_shape"
+        app:backgroundTint="@color/theme_inverse"
+        android:textColor="@color/textColor"
+        app:icon="@drawable/ic_share"
+        app:iconTint="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@+id/tvScore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintEnd_toStartOf="@+id/btnReturnToFeed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <Button
+        android:id="@+id/btnReturnToFeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/secondaryColor"
+        android:textColor="@android:color/white"
+        android:text="@string/return_to_feed"
+        android:background="@drawable/button_shape"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnShareResults"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnShareResults"
+        app:layout_constraintTop_toTopOf="@+id/btnShareResults" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,45 +7,31 @@
     android:layout_height="wrap_content"
     android:background="@drawable/button_outline"
     android:padding="8dp"
-    android:layout_marginHorizontal="4dp"
+    android:orientation="horizontal"
+    android:weightSum="1"
     android:layout_marginVertical="12dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvOption"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:paddingHorizontal="16dp">
+        tools:text="Option bla bla ..."
+        android:textStyle="bold"
+        android:textColor="@color/textColorOpposite"
+        android:fontFamily="@font/source_code_pro_regular"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="12dp"
+        android:layout_weight="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
-            android:id="@+id/tvOptionNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="A"
-            android:textStyle="bold"
-            android:textColor="@color/textColor"
-            android:background="@drawable/button_rounded"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            app:layout_constraintStart_toEndOf="@id/tvOptionNumber"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <WebView
-                android:id="@+id/wvOption"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:button="@drawable/custom_checkbox"/>
 
 </LinearLayout>

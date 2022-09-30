@@ -49,13 +49,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/textWhite"/>
+                android:backgroundTint="@android:color/white"/>
 
             <Button
                 android:id="@+id/btnNextQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textWhite"
+                android:textColor="@android:color/white"
                 android:backgroundTint="@color/primaryColor"/>
         </LinearLayout>
 
