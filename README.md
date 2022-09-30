@@ -14,7 +14,8 @@ The app first lists a set of questions which are available in the JSON data. Use
 - User can share the result of the quiz with his/her friends.
 - Timer for Quiz.
 
-## Screenshots
+## Screenshots and Videos
+https://user-images.githubusercontent.com/84123733/193307586-2bb6f91d-2b50-4b9f-b5be-0d3b9b4f5797.mp4
 <img src="./screenshots/0.jpeg" width="250"> <img src="./screenshots/1.jpeg" width="250"> <img src="./screenshots/2.jpeg" width="250"> <img src="./screenshots/3.jpeg" width="250"> <img src="./screenshots/4.jpeg" width="250"> <img src="./screenshots/4.jpeg" width="250"> <img src="./screenshots/6.jpeg" width="250"> <img src="./screenshots/7.jpeg" width="250"> <img src="./screenshots/8.jpeg" width="250"> <img src="./screenshots/9.jpeg" width="250"> <img src="./screenshots/10.jpeg" width="250"> <img src="./screenshots/11.jpeg" width="250"> <img src="./screenshots/12.jpeg" width="250"> 
 
 ### Library and Dependencies Used 🔗
@@ -29,3 +30,4 @@ The app first lists a set of questions which are available in the JSON data. Use
 
 ## Known Issues
 - None
+
