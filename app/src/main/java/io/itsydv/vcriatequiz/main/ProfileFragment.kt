@@ -102,6 +102,10 @@ class ProfileFragment : Fragment() {
                 }
             }
 
+            binding.tvEditProfile.setOnClickListener {
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToUpdateProfileFragment())
+            }
+
             binding.tvLogout.setOnClickListener {
                 binding.llLogout.performClick()
             }

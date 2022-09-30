@@ -36,4 +36,9 @@
     <string name="start_quiz">Start Quiz</string>
     <string name="edit">Edit</string>
     <string name="take_quiz">Take Quiz</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="new_password">New Password</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="update_profile">Update Profile</string>
 </resources>
