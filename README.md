@@ -1,6 +1,6 @@
 # VCriate QuizApp 🤖
 
-[![version-0.1](https://img.shields.io/badge/version-0.1-green)](https://github.com/Itsydv/VCriate-QuizApp)
+[![version-0.2](https://img.shields.io/badge/version-0.2-green)](https://github.com/Itsydv/VCriate-QuizApp)
 [![Kotlin](https://img.shields.io/badge/language-Kotlin-blue)](https://kotlinlang.org)
 
 This is an Basic QuizApp based on the Information provided in the Intern hiring task and JSON data fetched from API.
