@@ -3,6 +3,7 @@ package io.itsydv.vcriatequiz.splash
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,16 +90,21 @@ class LoginFragment : Fragment() {
                     val account = task.getResult(ApiException::class.java)
                     if (account != null) {
                         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                        auth.signInWithCredential(credential).addOnCompleteListener { firebaseTask ->
-                            if (firebaseTask.isSuccessful) {
-                                val intent = Intent(requireActivity(), MainActivity::class.java)
-                                startActivity(intent)
-                                requireActivity().finish()
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(requireContext(), "Authentication Failed", Toast.LENGTH_SHORT).show()
+                        auth.signInWithCredential(credential)
+                            .addOnCompleteListener { firebaseTask ->
+                                if (firebaseTask.isSuccessful) {
+                                    val intent = Intent(requireActivity(), MainActivity::class.java)
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(requireContext(), "Authentication Failed", Toast.LENGTH_SHORT).show()
+                                }
                             }
-                        }
+                            .addOnFailureListener {
+                                Toast.makeText(requireContext(), "Authentication Failed", Toast.LENGTH_SHORT).show()
+                                it.printStackTrace()
+                            }
                     }
                 } catch (e: ApiException) {
                     Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show()

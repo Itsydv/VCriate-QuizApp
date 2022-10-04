@@ -183,7 +183,9 @@ class QuestionFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        timer.cancel()
+        if (this::timer.isInitialized) {
+            timer.cancel()
+        }
         super.onDestroyView()
         _binding = null
     }
